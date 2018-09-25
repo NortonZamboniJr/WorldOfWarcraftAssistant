@@ -1,0 +1,70 @@
+.img-warcraft {
+    margin-top: -3% !important;
+}
+
+#footer {display:none;}
+
+.cover {
+    width: 100%;
+}
+.container color-dark {
+    width: 100%;
+}
+
+.container-page {
+    margin-bottom: -3px;
+}
+
+.container color-light{
+    width:120%;
+    margin-bottom: -3px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 50% auto;
+    margin-bottom: 0px;
+}
+
+.col {
+    padding: .4em 1.3em;
+}
+.color-dark{
+    background: rgb(51, 47, 47);
+}
+.color-light{
+    background: rgb(78, 78, 78);
+    margin-bottom: 0px;
+    
+}
+input.txt{
+    border: 0;
+    padding: 1em;
+    width: 80%;
+    margin-bottom: 2em;
+}
+
+
+p.sm{
+    margin-left: 6.5em;
+}
+
+input.btn2{
+    border: 0;
+    display: block;
+    padding: 1em 3em;
+    background: rgb(218, 218, 218);
+    color: rgb(0, 0, 0);
+    margin-bottom: 1em; 
+    cursor:pointer;
+    margin-left: 5.6em;
+    font-family: Raleway;
+}
+
+.quest-container{
+    background: rgb(129, 129, 129);
+    padding: .5em;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0px;
+}

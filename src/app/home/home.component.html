@@ -1,0 +1,29 @@
+<div class="container-page">
+<div class="img-warcraft">
+<img src="https://timelinecovers.pro/covers-images/download/warcraft.jpg" alt="Cover" class="cover">
+</div>
+<div class="container color-dark">
+  <div class="col">
+    <p> Character </p>
+  </div>
+  <div class="col">
+    <p> Character Log ({{ itemCount }})</p>
+  </div>
+</div>
+<div class="container color-light" [@quests]="quests.length">
+  <div class="col">
+    <p class="sm">Insert your character here.</p>
+    <form>
+      <input type="text" class="txt" name="item" placeholder="Your character" autocomplete=off [(ngModel)]='questText'>
+      <input type="text" class="txt" name="item" placeholder="Your realm" autocomplete=off [(ngModel)]='server'>
+      <input type="submit" class="btn1 supernorton" [value]="btnText" (click)="searchCharacter()">
+      <input type="submit" class="btn2" value="Delete Last Information" (click)="deleteQuest()">
+    </form>
+  </div> 
+  <div class="col">
+    <p class="quest-container" *ngFor="let variable of quests; let i = index" (click)="removeQuest(i)">
+      {{ variable }}
+    </p>
+  </div>
+</div>
+</div>

@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Raleway:300.700');
+
+body {
+    background: #2f3538;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: 'Raleway' ;
+    color: #fff;
+    overflow: hidden;
+    margin-bottom: 0px;
+}
+
+.container-page {
+    margin-bottom: 0px;
+}
+
+h1{margin-top:0px}
+
+ul {
+    list-style-type: none;
+    margin: 0 0 2em 0;
+    padding: 0;
+}
+ul li {
+    display: inline;
+    margin-right: 30px;
+}
+ul li a {
+    font-size: 1.Sem;
+}
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+input.btn1{
+    border: 0;
+    display: block;
+    padding: 1em 3em;
+    background: rgb(218, 218, 218);
+    color: rgb(0, 0, 0);
+    margin-bottom: 1em; 
+    cursor:pointer;
+    margin-left: 9.4em;
+    font-family: 'Raleway';
+    
+}
+
+#page-footer-wrapper {
+    visibility: hidden;
+  }      
+
+/*
+input.supernorton{
+    background: rgb(24, 255, 3) !important; 
+}
+
+*/
