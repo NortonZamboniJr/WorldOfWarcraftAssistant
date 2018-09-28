@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
 import { Ser1Service } from 'src/app/ser1.service';
-import { Observable } from 'rxjs';
+import { Observable, fromEventPattern } from 'rxjs';
+import { Personagens} from './character'
+import { batata } from '../batata'
+
+
 
 @Component({
   selector: 'app-home',
@@ -41,6 +45,7 @@ export class HomeComponent implements OnInit {
   questText: string = '';
   //quests = ['Crushing the Crown', 'Something is in the Air (and it Aint Love)', 'Get Them While They Are Young'];
   quests = [];
+  characters:  Personagens[];
   tableContent = '';
   searchOnGoing = false;
   searchDone = false;
@@ -49,6 +54,13 @@ export class HomeComponent implements OnInit {
   error = ''; 
   character;
   server: string = '';
+  faction='';
+  factionS=[];
+  i=0;
+  img=[];
+  character2;
+  spec=[];
+  k=0;
 
   constructor(private service: Ser1Service) { }
 
@@ -66,22 +78,28 @@ export class HomeComponent implements OnInit {
     this.itemCount = this.quests.length;
   } */
 
-  deleteQuest() {
+  deleteQuest(x) {
 
-    let x = this.quests.length - 1;
-    let newQuests = this.quests.slice(0, x);
-    this.quests = newQuests;
+    // l x = this.quests.length - 1;
+    //let newQuests = this.quests.splice(x, 1);
+    this.quests = this.quests.filter((value, index) => index != x);
+    this.img = this.img.filter((value, index) => index != x);
+    //this.quests = newQuests;
     this.itemCount = this.quests.length;
+    this.i--;
+   
 
   }
 
+
+
    searchCharacter(){ 
-    this.service.getCharacter(this.questText,this.server).subscribe( 
+    this.service.getCharacter(this.questText,this.server,this.factionS).subscribe( 
       res => { console.warn(res);
         this.character = res;
-        if(this.character.class == 1)
+          if(this.character.class == 1)
           this.character.class = 'Warrior';
-        if(this.character.class == 2)
+          if(this.character.class == 2)
           this.character.class = 'Paladin';
           if(this.character.class == 3)
           this.character.class = 'Hunter';
@@ -103,22 +121,92 @@ export class HomeComponent implements OnInit {
           this.character.class = 'Druid';
           if(this.character.class == 12)
           this.character.class = 'Demon Hunter';
-    
+          if(this.character.faction == 1){
+            this.factionS[this.i] = 'horda';
+          }
+          if(this.character.faction == 0){
+            this.factionS[this.i] = 'ally';
+          }
+          
+          // if(this.character.faction == 1){
+          //   this.faction = 'https://cdn4.iconfinder.com/data/icons/smashicons-game-flat/60/41_-_For_the_Horde_Flat-512.png';
+            
+          //   // this.character.faction = `<img src="${this.faction}"/>`; //"https://cdn0.iconfinder.com/data/icons/world-of-warcraft-wow-faction-and-class/199/Alliance-512.png"/>';//this.faction;
+          // }
+          // if(this.character.faction == 0){
+          //   this.faction = 'https://cdn0.iconfinder.com/data/icons/world-of-warcraft-wow-faction-and-class/199/Alliance-512.png';
+           
+          // }
+        this.searchCharacter2();
+        console.log("Spec na posicao i");
+        console.log(this.spec[this.k]);
         
-        this.quests.push("Nick: " + this.character.name +  " | Class: " + this.character.class + " | Level: "  + this.character.level);
+       
+        
+
+        setTimeout(() => {
+        
+        if(this.spec[this.k]==undefined){
+          this.spec.push("Não cadastrado.");
+          this.img.push("https://cdn.worldvectorlogo.com/logos/world-of-warcraft.svg");
+        }
+        else{
+          
+        }
+        this.k++;
+        this.quests.push("Nick: " + this.character.name +  " | Class: " + this.character.class + " | Level: "  + this.character.level + " | Realm: " + this.character.realm + " | Spec: " + this.spec[this.k-1]);
+        console.log(this.k);
         this.questText = '';
         this.itemCount = this.quests.length;
+        
+        }, 1500);
+      
+        
+        
+        
+        console.log(" array Spec")
+        console.log(this.spec);
+       
+        
+       
       },
+      
     ); 
-    
-        // getServer(){
-
-        // }
-
     } 
 
 
-  removeQuest(i) {
-    this.quests.splice(i, 1);
-  }
+    searchCharacter2(){ 
+      
+      this.service.getRaider(this.questText,this.server).subscribe(
+        res=> { console.warn(res);
+          this.character2 = res;
+          //this.quests.push("Nick: " + this.character.name + " Spec: " + this.character.active_spec_name);
+        //this.img[this.i] = this.character2.thumbnail_url;
+        this.img.push(this.character2.thumbnail_url);
+        this.spec.push(this.character2.active_spec_name);
+        this.questText = '';
+        this.itemCount = this.quests.length;
+        this.i++;
+        
+        },
+      );
+      
+    }
+
+
+
+
+
+
+
+
 }
+
+
+
+//na API, tem character
+// level, classe, faction
+// quando a facção = 0, é ally
+//quando a facção = 1, é horda
+//character.level
+//character.faction  

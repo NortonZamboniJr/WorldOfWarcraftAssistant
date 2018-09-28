@@ -16,14 +16,38 @@
     <form>
       <input type="text" class="txt" name="item" placeholder="Your character" autocomplete=off [(ngModel)]='questText'>
       <input type="text" class="txt" name="item" placeholder="Your realm" autocomplete=off [(ngModel)]='server'>
-      <input type="submit" class="btn1 supernorton" [value]="btnText" (click)="searchCharacter()">
+      <input type="submit" class="btn2" [value]="btnText" (click)="searchCharacter()">
       <input type="submit" class="btn2" value="Delete Last Information" (click)="deleteQuest()">
     </form>
   </div> 
-  <div class="col">
-    <p class="quest-container" *ngFor="let variable of quests; let i = index" (click)="removeQuest(i)">
-      {{ variable }}
-    </p>
+  <div id="idDiv" class="col">
+    <div class="quest-container" *ngFor="let variable of quests; let i = index" (click)="deleteQuest(i)">
+        <!-- <img *ngIf="factionS[i] === 'ally'" src="https://cdn0.iconfinder.com/data/icons/world-of-warcraft-wow-faction-and-class/199/Alliance-512.png" class="factionImg" alt="Faction Icon" height="50px" width="50px"/>
+        <img *ngIf="factionS[i] === 'horda'" src="https://cdn4.iconfinder.com/data/icons/smashicons-game-flat/60/41_-_For_the_Horde_Flat-512.png" class="factionImg" alt="Faction Icon" height="50px" width="50px"/> -->
+        <img [src]="img[i]" id="undefined" style="display:inline-block; margin-left: 1%;
+        margin-top: 1%;"/>
+        <div id='texto'>  {{ variable }} </div>
+      <!-- <img class="factionImg" [src]="faction" alt="Faction Icon" height="50px" width="50px"/> -->
+      <!-- <script>
+          if(faction='Horde'){
+            let asd = document.createElement('img');
+            asd.src = 'https://cdn4.iconfinder.com/data/icons/smashicons-game-flat/60/41_-_For_the_Horde_Flat-512.png';
+            asd.alt = 'Horde Icon';
+
+            if facção = 0 
+               img src blabla
+            if facção = 1 
+                img src .... 
+
+            document.getElementById('idDiv').appendChild(asd);
+
+          }
+          else if(faction='Alliance'){
+            <img src="https://cdn0.iconfinder.com/data/icons/world-of-warcraft-wow-faction-and-class/199/Alliance-512.png" alt="Alliance Icon"/>
+          }
+      </script> -->
+
+    </div>
   </div>
 </div>
 </div>
