@@ -9,13 +9,12 @@ import { getOrCreateNodeInjector } from '@angular/core/src/render3/di';
   providedIn: 'root'
 })
 
-
-
 export class Ser1Service {
 
   url = 'https://us.api.battle.net/wow/character/'; 
   url2 = 'https://raider.io/api/v1/characters/profile?region=us&realm=';
   endOfUrl = '?locale=pt_BR&apikey=rsrs9dkd6k6q6myygbxmuy2zexuz537a';
+  itemUrlDone;
   constructor(private http: Http) { }
 
   getCharacter(name,server,factionS): Observable<Personagens> {
@@ -31,5 +30,10 @@ export class Ser1Service {
     return this.http.get(finalUrl).pipe(map((res: Response) => res.json()));
   }
 
+  getArmory(name,server): Observable<Personagens> {
+    this.itemUrlDone = this.url + server + '/' + name + '?fields=items&locale=pt_BR&apikey=rsrs9dkd6k6q6myygbxmuy2zexuz537a';
+    console.log(this.itemUrlDone);
+    return this.http.get(this.itemUrlDone).pipe(map((res: Response) => res.json()));
+  }
 
 }

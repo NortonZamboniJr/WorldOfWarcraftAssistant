@@ -1,0 +1,43 @@
+ <app-navbar> </app-navbar> 
+<body><div id="clips-display"></div> </body>
+
+   <script>
+   
+   var httpRequest = new XMLHttpRequest();
+
+httpRequest.addEventListener('load', clipsLoaded);
+httpRequest.open('GET', 'https://api.twitch.tv/kraken/clips/top?limit=10&channel=moonmoon_ow');
+httpRequest.setRequestHeader('Client-ID', 'uo6dggojyb8d6soh92zknwmi5ej1q2');
+httpRequest.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
+httpRequest.send();
+   
+function clipsLoaded() {
+    var clipsDisplay = document.getElementById('clips-display'),
+        clipList = JSON.parse(httpRequest.responseText);
+
+    clipList.clips.forEach(function(clip, index, array) {
+        clipItem = document.createElement('div');
+        clipItem.innerHTML = clip.embed_html;
+        clipsDisplay.appendChild(clipItem);
+    });
+}
+   
+   </script>
+
+<form>
+    <input type="text" class="streamer" name="item" placeholder="Your favorite streamer" autocomplete=off [(ngModel)]='streamer' >
+    <button mat-raised-button color="primary" type="submit" class="btn2" id="streamerButton" [value]="btnText" (click)="linkCreator()"> Search Stream </button>
+  </form>
+<iframe id ="tuiti"
+
+[src]="finalLink | safe"
+height="750"
+
+width="1700"
+frameborder="0"
+scrolling="no"
+allowfullscreen="true">
+</iframe>
+<ng-content></ng-content>
+
+

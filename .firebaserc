@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "staging": "wowzitcho",
+    "default": "wowzitcho"
+  }
+}

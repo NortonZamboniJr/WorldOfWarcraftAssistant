@@ -1,0 +1,35 @@
+<app-navbar> </app-navbar>
+<div class="img-warcraft">
+  <img src="http://www.twitrcovers.com/wp-content/uploads/2012/12/World-of-Warcraft-l.jpg" alt="Cover" class="cover">
+</div>
+<div class="container color-dark">
+    <h1 id=text> Character </h1>
+    <!-- <p id=text> Character </p> -->
+</div>
+<form>
+  <input type="text" class="txt" name="item" placeholder="Your character" autocomplete=off [(ngModel)]='name'>
+  <input type="text" class="txt" name="item" placeholder="Your realm" autocomplete=off [(ngModel)]='server'>
+  
+  
+  <button mat-raised-button color="primary" type="submit" class="btn2" [value]="btnText" (click)="searchGear()">Search Character Gear</button>
+ 
+  
+</form>
+
+<div>
+<div *ngFor="let variable of headItem; let i = index">
+     <!-- <div class="gearContainer"> -->
+     <img [src]="headUrl" id="undefined"/>  
+     <p id="variable">{{variable}}</p>
+    <!-- </div> -->
+</div>
+
+
+<div *ngFor="let xd of shoulderItem; let j = index">
+    <!-- <div class="gearContainer"> -->
+    <img [src]="shoulderUrl" id="undefined"/>  
+    <p id="variable">{{xd}}</p>
+    
+   <!-- </div> -->
+</div>
+</div>

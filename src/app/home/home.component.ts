@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
 import { Ser1Service } from 'src/app/ser1.service';
 import { Observable, fromEventPattern } from 'rxjs';
-import { Personagens} from './character'
-import { batata } from '../batata'
+import { Personagens } from './character';
+
+// import { quests } from '../quests';
 
 
 
@@ -154,12 +155,12 @@ export class HomeComponent implements OnInit {
           
         }
         this.k++;
-        this.quests.push("Nick: " + this.character.name +  " | Class: " + this.character.class + " | Level: "  + this.character.level + " | Realm: " + this.character.realm + " | Spec: " + this.spec[this.k-1]);
+        this.quests.push("Nick:  " + this.character.name +  "  | Class:  " + this.character.class + "  | Level:  "  + this.character.level + "  | Realm:  " + this.character.realm + "  | Specialization:  " + this.spec[this.k-1]);
         console.log(this.k);
         this.questText = '';
         this.itemCount = this.quests.length;
         
-        }, 1500);
+        }, 800);
       
         
         
